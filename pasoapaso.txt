@@ -1,0 +1,17 @@
+-Se inicia proyecto Laravel con artizan
+
+-Se instala con composer el Laravel UI 
+-Se genera el scaffolding con login/registration, con bootstrap
+-se compila con npm install y npm run dev
+
+-Se instala con composer el Laravel Fortify
+-se publican los resources de Fortify (se genera el directorio actions en app)
+-Se agrega el provaider de Fortify en el config app.php
+-se configura .env con la info de la DB
+-se realiza el migrate 
+-se indica al proviaider de Fortify como resolver las vistas del frontend (se copian de la documentacion de Fortify)
+
+-Se eimina la carpeta de controladores para el backend "Auth" generada automaticamente al instar Laravel UI
+-Se quitan las rutas de "Auth::routes" generadas automaticamente al instalar UI, se comentan ya que no se va a usar el backend de UI sino el de Fortify (con las vistas modificadas de UI)
+-permanecen las vistas generadas en "Auth" por la instalación de UI ya que Fortify no tiene frontend por lo que se usara el de UI
+-
