@@ -44,5 +44,19 @@ Ver los videos que explican Breeze y Fortify
 	*se quita el relleno por defecto del correo y contraseña de la plantilla
 	*se cambia el nombre del boton Log in, y otros textos de la vista
 -se personalizan la vista de registro
+	*se quita el check de politicas de privacidad
 -se personalizan el layout futer guest
 	*se quita el mensaje de pie de pagina
+/////
+
+-se realisa el mismo procedimiento con la vista dashboard (pero se pega en home) como con la vista login, se trae el codigo de la plantilla.
+-dado que dashboard acude a muchas rutas en sus secciones de vavegación, se inhabilitan todas estas a las que recure por ahora(se pone # en lugar de la ruta), tanto en sidebar como en navs.auth, para mas tarde ir habiliatando segun se necesiten.
+-
+
+
+
+
+
+
+
+
