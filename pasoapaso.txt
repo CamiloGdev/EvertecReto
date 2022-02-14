@@ -29,4 +29,20 @@ Ver los videos que explican Breeze y Fortify
 -ya que varias vistas de la plantilla se extienden de la vista "layouts/app", se crea un nuevo layout en el proyecto llamado main (para no borrar el app original, y en este se copia el contenido de "app" de la plantilla.
 -copoamos los archivos desde la plantilla a los que el frontend debe recurir para mostrar, como imajenes e iconos css y js, y los copiamos en la carpeta de nuetro proyecto.
 -copiamos las carpetas con las vistas necesarias desde la plantilla a los que el frontend debe recurir para mostrar, y los copiamos en la carpeta de nuetro proyecto.
--se verifica en cada una de las vistas que se vallan necesitando cuales recursos hacen falta, y se procede a importar estos desde la plantilla, o  en el caso de que no se consideren necesarios se omiten, generamente los trae desde la carpeta public con un prefijo "asset", por lo que se pueden buscar en el documento co nesta palabra, (en la mayoria de los casos la plantilla recurrre a una subcarpeta en public, pero en nuestro proyecto los recursos estan directamente en public, po rlo que solo hay que quitar el acceso a la subcarpeta). 
+-se verifica en cada una de las vistas (en este caso main) que se vallan necesitando cuales recursos hacen falta, y se procede a importar estos desde la plantilla, o  en el caso de que no se consideren necesarios se omiten (se borran los plugins de js no utiles), generamente los trae desde la carpeta public con un prefijo "asset", por lo que se pueden buscar en el documento co nesta palabra, (en la mayoria de los casos la plantilla recurrre a una subcarpeta en public, pero en nuestro proyecto los recursos estan directamente en public, po rlo que solo hay que quitar el acceso a la subcarpeta).
+-quitamos del navbar la opcion dashboard y la opcion profile
+//////
+
+-se realisa el mismo procedimiento con la vista register como con la vista login, se trae el codigo de la plantilla.
+-se terminan de quital los plugins en el layout main que no son necesarios por ahora (los comente)
+-se personaliza un poco la vista main
+	*se cambia el titulo de pestaña
+-Se quitan componentes los sidebar fikters que salian al estar logeados.
+-se personalizan la vista de login
+	*se cambia el subtitulo de login
+	*se quitan los iconos de acceso con redes sociale
+	*se quita el relleno por defecto del correo y contraseña de la plantilla
+	*se cambia el nombre del boton Log in, y otros textos de la vista
+-se personalizan la vista de registro
+-se personalizan el layout futer guest
+	*se quita el mensaje de pie de pagina

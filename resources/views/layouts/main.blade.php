@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="csrf-token" content="{{ csrf_token() }}">
-		<title>{{ __('Material Dashboard Laravel - Free Frontend Preset for Laravel') }}</title>
+		<title>{{ __('Reto Evertec-Christian Galeano') }}</title>
 		<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/img/apple-icon.png') }}">
 		<link rel="icon" type="image/png" href="{{ asset('/img/favicon.png') }}">
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -25,7 +25,8 @@
 				@guest()
 						@include('layouts.page_templates.guest')
 				@endguest
-				@if (auth()->check())
+
+				{{-- @if (auth()->check())
 				<div class="fixed-plugin">
 					<div class="dropdown show-dropdown">
 						<a href="#" data-toggle="dropdown">
@@ -99,13 +100,14 @@
 						</ul>
 					</div>
 				</div>
-				@endif
+				@endif --}}
+
 				<!--   Core JS Files   -->
 				<script src="{{ asset('/js/core/jquery.min.js') }}"></script>
 				<script src="{{ asset('/js/core/popper.min.js') }}"></script>
 				<script src="{{ asset('/js/core/bootstrap-material-design.min.js') }}"></script>
 				<script src="{{ asset('/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-				<!-- Plugin for the momentJs  -->
+				{{-- <!-- Plugin for the momentJs  -->
 				<script src="{{ asset('/js/plugins/moment.min.js') }}"></script>
 				<!--  Plugin for Sweet Alert -->
 				<script src="{{ asset('/js/plugins/sweetalert2.js') }}"></script>
@@ -138,7 +140,7 @@
 				<!--  Notifications Plugin    -->
 				<script src="{{ asset('/js/plugins/bootstrap-notify.js') }}"></script>
 				<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-				<script src="{{ asset('/js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
+				<script src="{{ asset('/js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script> --}}
 				@stack('js')
 		</body>
 </html>
