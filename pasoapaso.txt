@@ -1,11 +1,17 @@
+backend y frontend
+
+/////
+CONFIGURACIONES INICIALES
+Ver los videos que explican Breeze y Fortify
+
 -Se inicia proyecto Laravel con artizan
 
 -Se instala con composer el Laravel UI 
 -Se genera el scaffolding con login/registration, con bootstrap
--se compila con npm install y npm run dev
+-se compila con npm install y npm run dev (se debe inicializar el mix?)
 
 -Se instala con composer el Laravel Fortify
--se publican los resources de Fortify (se genera el directorio actions en app)
+-se publican los resources de Fortify (se genera el directorio actions en app, el provider, el config)
 -Se agrega el provaider de Fortify en el config app.php
 -se configura .env con la info de la DB
 -se realiza el migrate 
@@ -14,4 +20,13 @@
 -Se eimina la carpeta de controladores para el backend "Auth" generada automaticamente al instar Laravel UI
 -Se quitan las rutas de "Auth::routes" generadas automaticamente al instalar UI, se comentan ya que no se va a usar el backend de UI sino el de Fortify (con las vistas modificadas de UI)
 -permanecen las vistas generadas en "Auth" por la instalación de UI ya que Fortify no tiene frontend por lo que se usara el de UI
--
+
+-en el fortifyprovider se cambian los nombre de las vistas por defcto que se retornan para que coincidan con las de UI
+/////
+
+-se descarga el template de vistas "material dashboard" y se abre en editor de codigo
+-se reemplaza el codigo de la vista login del proyecto por el de la plantilla, el metodo de llamdo y la ruta son las mismas.
+-ya que varias vistas de la plantilla se extienden de la vista "layouts/app", se crea un nuevo layout en el proyecto llamado main (para no borrar el app original, y en este se copia el contenido de "app" de la plantilla.
+-copoamos los archivos desde la plantilla a los que el frontend debe recurir para mostrar, como imajenes e iconos css y js, y los copiamos en la carpeta de nuetro proyecto.
+-copiamos las carpetas con las vistas necesarias desde la plantilla a los que el frontend debe recurir para mostrar, y los copiamos en la carpeta de nuetro proyecto.
+-se verifica en cada una de las vistas que se vallan necesitando cuales recursos hacen falta, y se procede a importar estos desde la plantilla, o  en el caso de que no se consideren necesarios se omiten, generamente los trae desde la carpeta public con un prefijo "asset", por lo que se pueden buscar en el documento co nesta palabra, (en la mayoria de los casos la plantilla recurrre a una subcarpeta en public, pero en nuestro proyecto los recursos estan directamente en public, po rlo que solo hay que quitar el acceso a la subcarpeta). 
