@@ -1,8 +1,7 @@
-backend y frontend
+Ver los videos que explican Breeze y Fortify
 
 /////
-CONFIGURACIONES INICIALES
-Ver los videos que explican Breeze y Fortify
+CONFIGURACIONES INICIALES (se realiza con bootstrap)
 
 -Se inicia proyecto Laravel con artizan
 
@@ -17,7 +16,7 @@ Ver los videos que explican Breeze y Fortify
 -se realiza el migrate 
 -se indica al proviaider de Fortify como resolver las vistas del frontend (se copian de la documentacion de Fortify)
 
--Se eimina la carpeta de controladores para el backend "Auth" generada automaticamente al instar Laravel UI
+-Se elimina la carpeta de controladores para el backend "Auth" generada automaticamente al instar Laravel UI
 -Se quitan las rutas de "Auth::routes" generadas automaticamente al instalar UI, se comentan ya que no se va a usar el backend de UI sino el de Fortify (con las vistas modificadas de UI)
 -permanecen las vistas generadas en "Auth" por la instalación de UI ya que Fortify no tiene frontend por lo que se usara el de UI
 
@@ -51,7 +50,81 @@ Ver los videos que explican Breeze y Fortify
 
 -se realisa el mismo procedimiento con la vista dashboard (pero se pega en home) como con la vista login, se trae el codigo de la plantilla.
 -dado que dashboard acude a muchas rutas en sus secciones de vavegación, se inhabilitan todas estas a las que recure por ahora(se pone # en lugar de la ruta), tanto en sidebar como en navs.auth, para mas tarde ir habiliatando segun se necesiten.
--
+-quitamos upgrade to pro de sidebar (se comenta)
+-se corrige otras rutas en sidebar que llaman a subcarpeta de public.material, para que recurran directamente a public.
+-de la vista home se quitan los llamados a js, ya que dichos plugins se quitaron de main para no usarlos.
+-de la vista home comentamos los demas elementos de la seccion de contenido para que quede una plantilla en blanco.
+DESDE ACA SE PEUDE DEJAR EL PROYECTO COMO PLANTILLA.
+//////
+
+-Vamos a crear un nuevo campo para usuario, username
+-creamos una migracion para agregar el campo a la tabla users, no se debe modificar la tabla original, se deben agregar los campos bajo otra migración
+-se agrega el username a protected filable en el modelo user
+-en la vista register copiamos el codigo del campo name para el campo username, y cambiamos user por usernamen en el codigo.
+-cambiamos el icono para el input username cambiando el nombre en vista register
+-se debe modificar el controlador de create agregando username, ademas se le otorga la caracteristica unique (recordad que al instalar Fortify los controladores de login quedan en la carpeta app.actions)
+-espesificamos en config.fortify que el login sera tambien con el username en ves de solo con email.
+-en la vista login copiamos el codigo del campo email para el campo username, y cambiamos email por usernamen en el codigo. (ME ESTA ARROGANDO ERROR DE "(Too Many Requests)" CUANO INTENTO LOGEARME, al parecer por hacer muchas peticiones de acceso)
+-para permitir login con username o email, se debe agregar a fortifyservice provider la Customizing User Authentication (se saca de la docuentacio), y lo configuramos para que devuelva username, ya sea que se escriba email o username.
+/////
+
+-creamos un controlador par ael CRUD
+-creamos el metodo create en el usercontroller, llamando a la vista users.create
+-creamos la vista users.create
+-creamos la ruta get para la vista create para el CRUD
+-extendemos de los layouts las secciones necesarias para la vista create, y le pasamos como parametros a sidebar y a navs.auth, el titlePage y el activePage
+-en el sidebar tomamos la seccion table para nuestro users, y reemplazamos los table por users en el codigo
+-modificamos el content de la visata create para que reorganise, con los respectivos div (tomando como ejemplo la vista profile.edit de la plantilla, no se copia completa ya que muchos elementos de esta no seran usados.)
+-creamos un form-post, y llamamos la clase de la plantilla form-hotizontal, y declaramos el crsf
+-seguimos modificando el content basados en la plantilla para agregar las secciones nencesarias para la vista
+	*agregamos los label para el card header
+	*agregamos los label y los input para el card body
+	*agregamos los botonesel para el card footer
+-creamos el metodo store el usercontroller, llamando a la misma vista con redirect->back, llamando a los respectivos modelos necesarios
+-creamos la ruta store para la vista create para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.store
+-asignamos la accion del form create en la vista para que dirija a la ruta 
+-en el usercontroller asignamos el has al pasword para que la guarde encriptada en la DB
+
+//////
+
+-creamos el metodo index en el usercontroller, llamando a la misma vista users.index
+-en el metodo llamamos los registros de la DB con paginacion de 5
+-extendemos de los layouts las secciones necesarias para la vista index, y le pasamos como parametros a sidebar y a navs.auth, el titlePage y el activePage
+-cambiamos el nombre de la pestaña de table a users en el sidebar
+-modificamos el content de la visata index para que reorganise, con los respectivos div (tomando como ejemplo la vista de la plantilla, no se copia completa ya que muchos elementos de esta no seran usados.)
+-seguimos modificando el content basados en la plantilla para agregar las secciones nencesarias para la vista
+	*agregamos para el card header
+	*agregamos para el card body
+		-creamos los encabezados de la tabla
+		-recorremos el arreglo para listar los registros
+		
+	*agregamos para el card footer
+-creamos la ruta store para la vista index para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.index
+-para los botones de paginacion, agregamos el helper {{ $users->links() }} en el footer, y agregamos los parametros de paginacion en el user controller
+-ya que laravel 8 trabaja con tailwind, debemos cambiar a bootstrap para que los botones de paginacion se vean correctamente agregando las lineas desde la documentacion en el appserviceprovidre.
+--TAMBIEN SE PUEDE USER DATATABLES--
+-agregamos boton al index para añadir nuevo usuario
+-le asignamos name a la ruta create
+-en el action del boton asignamos la ruta respectiva.
+-paea el sidebar asignamos la ruta de users.index a la pestaña users
+-modificamos el return del modelo store para que al dar save nos retorne a la vista index
+////
+
+-agregamos la alerta en la vista index para que cuando retorne de create con el boton save aparesca el mensaje, usando el helper de larabel succes
+-en el metodo store del usercontroller le indicamos al return view que traiga el helper success con el mensaje definido (solo funciona para esa secion, al refrescar se borra)
+//////
+
+-agregamos los botones actions para el CRUD en la vista index, con las class de la plantilla para los tamaños y la ubicacion deseada
+-creamos el metodo show en el usercontroller, asignando como parametro id 
+-traemos el usuario con el metodo find del usermodel, con la variable id.
+-llamando a la vista show, pasando como reistro el usuario encontrado.
+-creamos la ruta show para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.show
+
+
+
+
+
+
 
 
 
