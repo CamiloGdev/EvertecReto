@@ -19,7 +19,7 @@
 										<p class="card-text">
 											<div class="author">
 												<a href="#">
-													<img src=" {{ asset('img/default-avatar.png') }} " alt="image" class="avatar">
+													<img src="{{ asset('img/default-avatar.png') }}" alt="image" class="avatar">
 													<h5 class="title mt-3">{{ $user->name }}</h5>
 												</a>
 												<p class="description">
@@ -35,7 +35,7 @@
 									</div>
 									<div class="card-footer">
 										<div class="button-container">
-											<a href=" {{ route('users.index') }} " class="btn btn-sm mr-3">Back</a>
+											<a href="{{ route('users.index') }}" class="btn btn-sm mr-3">Back</a>
 											<button class="btn btn-sm btn-primary">Edit</button>
 										</div>
 									</div>
