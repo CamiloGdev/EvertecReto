@@ -11,6 +11,11 @@
 					</div>
 					<!--body-->
 					<div class="card-body">
+						@if (session('success'))
+							<div class="alert alert-success" role="success">
+								{{ session('success') }}
+							</div>
+						@endif
 						<div class="row">
 							{{-- Card User --}}
 							<div class="col-md-6">
@@ -36,7 +41,8 @@
 									<div class="card-footer">
 										<div class="button-container">
 											<a href="{{ route('users.index') }}" class="btn btn-sm mr-3">Back</a>
-											<button class="btn btn-sm btn-primary">Edit</button>
+											<a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
+											{{-- <button class="btn btn-sm btn-primary">Edit</button> --}}
 										</div>
 									</div>
 								</div>
