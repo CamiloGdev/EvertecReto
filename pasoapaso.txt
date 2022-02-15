@@ -128,9 +128,46 @@ DESDE ACA SE PEUDE DEJAR EL PROYECTO COMO PLANTILLA.
 -en el metodo show en el usercontroller, le cambiamos el metodo de busqueda de Find por FindOrFail, para que el no encontrar ningun registro devuelva un mensaje de error.
 -en la vista users.index cambiamos los botones para el CRUD por harefs para acceder a las opciones por medio de las rutas, los parametros de route los pasamos con la ruta y el id, para que lleve al controlador el usuario deseado.
 ????-en usercontroller Cambiamos el argumento del metodo show de id por 'user $user' y asi podemos quitar el findOrfail, con esto se simplifica el codigo y el resultado es el mismo
+??como puedo volver pero a la pagina en que estaba el usuario seleccionado??-en vista show creamos un boton para retornar a index.
+////
 
+-creamos el metodo edit para el usercontroller, retornando la vista edit con el parametro del usuario requerido.
+-creamos la ruta edit para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.edit
+-en la vista users.index cambiamos los botones para el CRUD por harefs para acceder a las opciones por medio de las rutas, los parametros de route los pasamos con la ruta y el id, para que lleve al controlador el usuario deseado.
+-duplicamos la vista user.create y la llamamos user.edit, sera la misma vista pero al acceder traera los datos del usuario.
+-cambiamos los titulos y labels
+-quitamos los placehoder de los input
+-creamos el metodo update para el usercontroller
+-creamos la ruta update con put para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.update
+en la vista edit cambiamos el llamado de la ruta store por update, y le agregamos como parametro el usuario a editar con el id
+-ya que los metodos de http son get y post, pero necesitamos llamar al metodo put, debajo del llamado al action de la vista edit actualizamos el metodo con @method("PUT")
+-para el metodo update, para que se actualice con o sin contreseña si el usuario cambio esta o no, codificamos el condicional necesario.
+-retornamos la vista user.index, con un mensaje success de actualizacion de datos exitosa.
+////
+
+-modificamos la ruta llamada por el metodo store para que retorne a show en ves de a index, se debe declarar ademas el id para que retorne el usuario especifico, para esto se debe tambien antes declarar la variable.
+-el mensaje success esta definido en la vista index mas no en la vista show, por lo que
+-hacemos lo mismo para elmetodo update
+-en la vista modificamos el boton edit para que rediteccione tambien a edit.
+////
+
+-creamos el metodo destroy para el usercontroller, retornando la vista index con back.
+-creamos la ruta destroy con delete para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.delete
+-para el boton eliminar de la vista index creamos un form y con la ruta y el el parametro id del usuario, y con el metodo posto que luego cambiaremos a delete.
+-agregamos la llave @csrf y cambiamos el metodo a delete, cambiamos el type del button a submit
+-asignamos un style al form para que el boton se vea en la misma linea de los otros dos.
+-asignamos un onsubmit al form para alertar y solicitar confirmacion de la eliminacion del usuario.
+
+!!!!!!!!!!!!!!!!
+agregar confirmacion de contraseña
+agrecar confirmacion por correo electronico
+agrecal control por roles
+agregar activar y desactivar users
+
+mensaje de confirmacion de eliminacion de usuario.
 
 instalar laravel degub 
+
 
 
 

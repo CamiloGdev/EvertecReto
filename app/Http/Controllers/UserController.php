@@ -51,4 +51,10 @@ class UserController extends Controller
         $user->update($data);
         return redirect()->route('users.show', $user->id)->with('success', 'Successful data update');
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return back()->with('success', 'Successfully deleted user');
+    }
 }
