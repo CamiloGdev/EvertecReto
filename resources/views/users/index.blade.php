@@ -43,9 +43,9 @@
 														<td>{{ $user->username }}</td>
 														<td>{{ $user->created_at }}</td>
 														<td class="td-actions text-right">
-															<button class="btn btn-info" type="button">
+															<a href=" {{ route('users.show', $user->id) }} " class="btn btn-info">
 																<i class="material-icons">person</i>
-															</button>
+															</a>
 															<button class="btn btn-warning" type="button">
 																<i class="material-icons">edit</i>
 															</button>

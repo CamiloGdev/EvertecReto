@@ -68,6 +68,7 @@ DESDE ACA SE PEUDE DEJAR EL PROYECTO COMO PLANTILLA.
 -para permitir login con username o email, se debe agregar a fortifyservice provider la Customizing User Authentication (se saca de la docuentacio), y lo configuramos para que devuelva username, ya sea que se escriba email o username.
 /////
 
++++++no estan en la descripcion del ultimo commit++++++
 -creamos un controlador par ael CRUD
 -creamos el metodo create en el usercontroller, llamando a la vista users.create
 -creamos la vista users.create
@@ -119,10 +120,17 @@ DESDE ACA SE PEUDE DEJAR EL PROYECTO COMO PLANTILLA.
 -traemos el usuario con el metodo find del usermodel, con la variable id.
 -llamando a la vista show, pasando como reistro el usuario encontrado.
 -creamos la ruta show para el CRUD, esta ves asignamos un nombre para hacer el llamado con la ruta users.show
+-creamos la vista users.show
++++++no estan en la descripcion del ultimo commit++++++
+-creamos las cards nesesarias para mostrar el usuario.
+-traemos los datos del usuario encontrado a la card
+-guardamos una imagen de default-avatar en la carpeta puplic.img y la asignamos a la card povisionalmente
+-en el metodo show en el usercontroller, le cambiamos el metodo de busqueda de Find por FindOrFail, para que el no encontrar ningun registro devuelva un mensaje de error.
+-en la vista users.index cambiamos los botones para el CRUD por harefs para acceder a las opciones por medio de las rutas, los parametros de route los pasamos con la ruta y el id, para que lleve al controlador el usuario deseado.
+????-en usercontroller Cambiamos el argumento del metodo show de id por 'user $user' y asi podemos quitar el findOrfail, con esto se simplifica el codigo y el resultado es el mismo
 
 
-
-
+instalar laravel degub 
 
 
 
