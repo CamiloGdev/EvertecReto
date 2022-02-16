@@ -159,13 +159,32 @@ en la vista edit cambiamos el llamado de la ruta store por update, y le agregamo
 -asignamos un onsubmit al form para alertar y solicitar confirmacion de la eliminacion del usuario.
 /////
 
+-para validar en el metodo store recurrimos al metodo validate
+-???podemos usar el metodo validator de los controladores de Fortify???
+-establecemos las validaciones en el metodo store para todos los campos, incluyendo el unique en email y username
+-agregamos a la vista create el codigo bajo el cardbody para mostrar los mensajes de error por las validaciones.(la variable error viene declarada por defecto en laravel.
+-agregamos value old a los input de la vista create para que al denegar la accion por alguna validación no se borren los datos ya ingresados por el usuario y los pueda modificar facilmente, menos en el campo password.
+-movemos los mensajes de alerta por validacion bajo cada uno de los input en ves de arriba en el card body, para esto debemos separarlos por campo llamando con has y el nombre del input, en ves de llamar a all.
+/////
+
+-para no agregar mucha funcionalidad ditectamente en usercontroller, creamos un request para el create del usercontroller para manejar las validaciones, con php artisan make:request
+-cambiamos el parametro authorize de reques nuevo a true
+-llevamos las validaciones del controlador hacia el request, y le agregamos el unique tambien a username.
+-creamos tambien un request para el edit del usercontroller para manejar las validaciones, con php artisan make:request
+-cambiamos el parametro authorize de reques nuevo a true
+-duplicamos las validaciones desde el otro request al de edit, 
+-agregamos a la vista edit el codigo para mostrar los mensajes de error por validacion como en la vista create.
+-en el valio de los input agregamos old(y el nombre de la variable), esto para que en prinsipio traiga los campos del usuario a editar, pero que al ingresar un campo invalido nos traiga dicho ingreso errado y poder corregir sobre este.
+-como esta obliga a cambiar los campos de username y de email cuando editamos ya que estan com unique, para corregir esto se debe decir a la validacion que siga siendo unique pero que tambien acepte como valor el mismo que ya tiene el usuario que intentamos editar (es decir un nuevo unico ó el mismo), (lo pongo de dos formas posibles para tenerlo como referencia)
+
+
 !!!!!!!!!!!!!!!!
-agregar confirmacion de contraseña
-agrecar confirmacion por correo electronico
-agrecal control por roles
-agregar activar y desactivar users
-quitar de la lista de usuarios al usuario que esta modificando
-modificar el usuario logeado desde la opcion verfil del vanbar
+*agregar confirmacion de contraseña en la vista edit y create, puedo usar los de fortify? junto con su has make?? que s epueden ver en los controladores de actions.
+*agrecar confirmacion por correo electronico solo en register, en add user debe quedar por defecto en verificado
+*agrecal control por roles
+*agregar activar y desactivar users
+*quitar de la lista de usuarios al usuario que esta modificando
+*modificar el usuario logeado desde la opcion verfil del vanbar
 
 
 instalar laravel degub 
