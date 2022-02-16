@@ -157,14 +157,16 @@ en la vista edit cambiamos el llamado de la ruta store por update, y le agregamo
 -agregamos la llave @csrf y cambiamos el metodo a delete, cambiamos el type del button a submit
 -asignamos un style al form para que el boton se vea en la misma linea de los otros dos.
 -asignamos un onsubmit al form para alertar y solicitar confirmacion de la eliminacion del usuario.
+/////
 
 !!!!!!!!!!!!!!!!
 agregar confirmacion de contraseña
 agrecar confirmacion por correo electronico
 agrecal control por roles
 agregar activar y desactivar users
+quitar de la lista de usuarios al usuario que esta modificando
+modificar el usuario logeado desde la opcion verfil del vanbar
 
-mensaje de confirmacion de eliminacion de usuario.
 
 instalar laravel degub 
 
