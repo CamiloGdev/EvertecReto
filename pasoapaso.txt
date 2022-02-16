@@ -175,24 +175,51 @@ en la vista edit cambiamos el llamado de la ruta store por update, y le agregamo
 -duplicamos las validaciones desde el otro request al de edit, 
 -agregamos a la vista edit el codigo para mostrar los mensajes de error por validacion como en la vista create.
 -en el valio de los input agregamos old(y el nombre de la variable), esto para que en prinsipio traiga los campos del usuario a editar, pero que al ingresar un campo invalido nos traiga dicho ingreso errado y poder corregir sobre este.
--como esta obliga a cambiar los campos de username y de email cuando editamos ya que estan com unique, para corregir esto se debe decir a la validacion que siga siendo unique pero que tambien acepte como valor el mismo que ya tiene el usuario que intentamos editar (es decir un nuevo unico ó el mismo), (lo pongo de dos formas posibles para tenerlo como referencia)
+-????no entendi bien la diferencia entre las 2 formas???? como esta obliga a cambiar los campos de username y de email cuando editamos ya que estan com unique, para corregir esto se debe decir a la validacion que siga siendo unique pero que tambien acepte como valor el mismo que ya tiene el usuario que intentamos editar (es decir un nuevo unico ó el mismo), (lo pongo de dos formas posibles para tenerlo como referencia)
+////
 
+???averiguar por que???#######RETORNO AL COMMIT ANTES DE LA INTEGRACION DE PERMISSION PARA INSTALAR LA VERSION 4 YA QUE LA 5 ME ESTA FALLANDO#######, sale error en la migracion.
+???por que al devolverme un commit devo hacer nuevamente composer instal para remover un paquete si se supone que dicho paquete no estaba instalado en ese commit???
+
+-vamos a INTEGRAR LARAVEL PERMISSION
+-instalamos con composer require spatie/laravel-permission
+-publicamos la migracion y los archivos de configuracion con php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+-limpiamos cache con php artisan optimize:clear
+-ejecutamos las migraciones con php artisan migrate, con lo que se crean las tablas asociadas a la funcionalidad de los roles.
+
+/////
+
+-Contruimos funcion index para el CRUD PARA PERMISOS Y ROLES
+-creamos el controlador con php artisan make:controller PermissionController --resource, con esta vandera para que nos cree de una ves los metodos del CRUD.
+-corregir error para cuando un usuario no logeado trate de acceder a una vista especifica del aplicativo lo envie a la vista login, lo hacemos creando una grupo de rutas con el midelwere auth.
+-creamos las rutas para permissions con resource para que se generene automaticamente
+-codificamos el metodo index de permissions
+-creamos la vista index configuramos sus parametros de entrada
+-asignamos y configuramos la pestaña para la seccion permissions
+-codificamos la vista index en base a la de users
+-cambiamos el foreach por forelse para mostrar un mensaje cuando no hay permisos registrados.
+/////
+
+-contruimos funcion create
+-creamos el metodo, cramos la vista a partir del create de users
+-???de que se trata el route model banding que se asigna como parametro al modelo del controller por ejemplo show???
+-contruimos funcion show
+-creamos el metodo, cramos la vista a partir del show de users
 
 !!!!!!!!!!!!!!!!
-*agregar confirmacion de contraseña en la vista edit y create, puedo usar los de fortify? junto con su has make?? que s epueden ver en los controladores de actions.
-*agrecar confirmacion por correo electronico solo en register, en add user debe quedar por defecto en verificado
 *agrecal control por roles
 *agregar activar y desactivar users
+*agregar confirmacion de contraseña en la vista edit y create, puedo usar los de fortify? junto con su has make?? que s epueden ver en los controladores de actions.
+*agrecar confirmacion por correo electronico solo en register, en add user debe quedar por defecto en verificado
+
 *quitar de la lista de usuarios al usuario que esta modificando
 *modificar el usuario logeado desde la opcion verfil del vanbar
+*integrar las validaciones en los permisos, con sus respectivos mensajes de alerta, con los requare respectivos
+*integrar los mensajes de success para los permisos
+*cambiar el defpult avatar del permiso
 
 
 instalar laravel degub 
-
-
-
-
-
 
 
 
