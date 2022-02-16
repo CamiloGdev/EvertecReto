@@ -189,7 +189,7 @@ en la vista edit cambiamos el llamado de la ruta store por update, y le agregamo
 
 /////
 
--Contruimos funcion index para el CRUD PARA PERMISOS Y ROLES
+-Contruimos CRUD PARA PERMISOS
 -creamos el controlador con php artisan make:controller PermissionController --resource, con esta vandera para que nos cree de una ves los metodos del CRUD.
 -corregir error para cuando un usuario no logeado trate de acceder a una vista especifica del aplicativo lo envie a la vista login, lo hacemos creando una grupo de rutas con el midelwere auth.
 -creamos las rutas para permissions con resource para que se generene automaticamente
@@ -202,9 +202,38 @@ en la vista edit cambiamos el llamado de la ruta store por update, y le agregamo
 
 -contruimos funcion create
 -creamos el metodo, cramos la vista a partir del create de users
+-codificamos el metodo store
 -???de que se trata el route model banding que se asigna como parametro al modelo del controller por ejemplo show???
 -contruimos funcion show
--creamos el metodo, cramos la vista a partir del show de users
+-creamos el metodo, creamos la vista a partir del show de users
+-contruimos funcion edit
+-creamos el metodo, creamos la vista a partir del edit de users
+-codificamos el metodo update
+-codificamos el metodo destroy
+////
+
+-Contruimos CRUD PARA ROLES
+-creamos el controlador con php artisan make:controller RoleController --resource, con esta vandera para que nos cree de una ves los metodos del CRUD.
+-creamos las rutas para roles con resource para que se generene automaticamente
+-codificamos el metodo index de roles
+-creamos la vista index configuramos sus parametros de entrada a partir de la de permisos
+-asignamos y configuramos la pestaña para la seccion roles
+-codificamos la vista index en base a la de permisos
+-cambiamos el foreach por forelse para mostrar un mensaje cuando no hay roles registrados.
+/////
+
+-construimos funcion create
+-creamos el metodo, creamos la vista a partir del create de permisos
+-codificamos el metodo store
+-???de que se trata el route model banding que se asigna como parametro al modelo del controller por ejemplo show???
+-contruimos funcion show
+-creamos el metodo, creamos la vista a partir del show de permisos
+-contruimos funcion edit
+-creamos el metodo, creamos la vista a partir del edit de users
+-codificamos el metodo update
+-codificamos el metodo destroy
+////
+
 
 !!!!!!!!!!!!!!!!
 *agrecal control por roles
