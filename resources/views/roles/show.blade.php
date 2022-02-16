@@ -29,7 +29,11 @@
 											</div>
 										</p>
 										<div class="card-description">
-											Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, culpa accusantium nemo quam et alias?
+											@forelse ($role->permissions as $permission)
+												<span class="badge rounded-pill bg-dark text-white">{{ $permission->name }}</span>
+											@empty
+												<span class="badge badge-danger bg-danger">No permissions</span>
+											@endforelse
 										</div>
 									</div>
 									<div class="card-footer">

@@ -60,6 +60,9 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         //
+        // abort_if(Gate::denies('role_show'), 403);
+
+        $role->load('permissions');
         return view('roles.show', compact('role'));
     }
 
