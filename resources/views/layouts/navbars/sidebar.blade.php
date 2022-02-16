@@ -47,10 +47,10 @@
             <p>Users</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('permissions.index')}}">
           <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
+            <p>{{ __('Permissions') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
