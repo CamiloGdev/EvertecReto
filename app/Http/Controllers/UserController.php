@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserEditRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\UserCreateRequest;
 
 class UserController extends Controller
 {
@@ -18,7 +19,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $roles = Role::all()->pluck('name', 'id');
+        return view('users.create', compact('roles'));
     }
 
     public function store(UserCreateRequest $request)
@@ -30,10 +32,12 @@ class UserController extends Controller
         //     'password' => 'required',
         // ]);
 
-        $user = User::create($request->only('name', 'username', 'email') + 
-        [
-            'password' => bcrypt($request->input('password')),
-        ]);
+        $user = User::create($request->only('name', 'username', 'email') 
+            + ['password' => bcrypt($request->input('password')),]);
+
+        $roles = $request->input('roles', []);
+        $user->syncRoles($roles);
+
         return redirect()->route('users.show', $user->id)->with('success', 'User created successfully');
     }
 
