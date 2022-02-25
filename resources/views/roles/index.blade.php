@@ -7,16 +7,18 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								
+
 								<div class="card-header card-header-primary">
 									<h4 class="card-title">Roles</h4>
 									<p class="card-category">Registered Roles</p>
 								</div>
 
-								<div class="card-body">									
+								<div class="card-body">
 									<div class="row">
 										<div class="col-12 text-right">
-												<a href="{{ route('roles.create') }}" class="btn btn-sm btn-facebook">Add rol</a>
+                                            @can('role_create')
+                                            <a href="{{ route('roles.create') }}" class="btn btn-sm btn-facebook">Add rol</a>
+                                            @endcan
 										</div>
 									</div>
 									<div class="table-responsive">
@@ -44,13 +46,19 @@
 															@endforelse
 														</td>
 														<td class="td-actions text-right">
+                                                            @can('role_show')
 															<a href="{{ route('roles.show', $role->id) }}" class="btn btn-info"><i class="material-icons">person</i></a>
+                                                            @endcan
+                                                            @can('role_edit')
 															<a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
+                                                            @endcan
+                                                            @can('role_destroy')
 															<form action="{{route('roles.destroy', $role->id)}}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure to remove this role?')">
 																@csrf
 																@method('DELETE')
 																<button class="btn btn-danger" type="submit" rel=tooltip><i class="material-icons">close</i></button>
 															</form>
+                                                            @endcan
 														</td>
 													</tr>
 													@empty
@@ -71,5 +79,5 @@
 				</div>
 			</div>
 		</div>
-	</div>                            
+	</div>
 @endsection

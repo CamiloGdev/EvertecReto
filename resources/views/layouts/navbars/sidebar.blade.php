@@ -17,7 +17,7 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+      {{--<li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('/img/laravel.svg') }}"></i>
           <p>{{ __('Laravel Examples') }}
@@ -40,43 +40,49 @@
             </li>
           </ul>
         </div>
-      </li>
+      </li>--}}
+      @can('user_index')
       <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('users.index')}}">
           <i class="material-icons">content_paste</i>
             <p>Users</p>
         </a>
       </li>
+      @endcan
+      @can('permission_index')
       <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permissions.index')}}">
           <i class="material-icons">library_books</i>
             <p>{{ __('Permissions') }}</p>
         </a>
       </li>
+      @endcan
+      @can('role_index')
       <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('roles.index')}}">
           <i class="material-icons">bubble_chart</i>
           <p>{{ __('Roles') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+      @endcan
+      {{--<li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">location_ons</i>
             <p>{{ __('Maps') }}</p>
         </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
+      </li>--}}
+      {{--<li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">notifications</i>
           <p>{{ __('Notifications') }}</p>
         </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
+      </li>--}}
+      {{--<li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">language</i>
           <p>{{ __('RTL Support') }}</p>
         </a>
-      </li>
+      </li>--}}
       {{-- <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link text-white bg-danger" href="#">
           <i class="material-icons text-white">unarchive</i>
