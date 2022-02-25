@@ -28,7 +28,7 @@ class UserEditRequest extends FormRequest
             //
             'name' => 'required|max:255|string',
             'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . request()->route('user')->id],
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . request()->route('user')->id],
             'password' => 'sometimes',
         ];
     }

@@ -63,7 +63,8 @@ class UserController extends Controller
 
     public function update(UserEditRequest $request, User $user)
     {
-        $data = $request->only('name', 'username', 'email');
+//        $data = $request->only('name', 'username', 'email');
+        $data = $request->only('name', 'username');
         $password = $request->input('password');
 
         if($password)
