@@ -27,6 +27,11 @@
                     </div>
                     <div class="card-body">
                         <p class="card-description text-center">{{ __('Enter your credentials ') }}</p>
+                        @if (session('error'))
+                            <div id="session-error" class="error text-danger pl-3" style="display: block;">
+                                <strong>{{ session('error') }}</strong>
+                            </div>
+                        @endif
                         {{-- <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -59,7 +64,7 @@
                                 </div>
                             @endif
                         </div>
-                        
+
                         <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
                             <div class="input-group">
                                 <div class="input-group-prepend">
