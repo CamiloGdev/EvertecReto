@@ -103,6 +103,7 @@
 				@endif --}}
 
 				<!--   Core JS Files   -->
+        <script src="{{ asset('js/app.js') }}"></script>
 				<script src="{{ asset('/js/core/jquery.min.js') }}"></script>
 				<script src="{{ asset('/js/core/popper.min.js') }}"></script>
 				<script src="{{ asset('/js/core/bootstrap-material-design.min.js') }}"></script>
