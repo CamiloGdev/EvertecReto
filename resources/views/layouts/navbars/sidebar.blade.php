@@ -49,14 +49,14 @@
         </a>
       </li>
       @endcan
-{{--        @can('product_index')--}}
+        @can('product_index')
             <li class="nav-item{{ $activePage == 'products' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('products.index')}}">
                     <i class="material-icons">content_paste</i>
                     <p>Products</p>
                 </a>
             </li>
-{{--        @endcan--}}
+        @endcan
       @can('permission_index')
       <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permissions.index')}}">
