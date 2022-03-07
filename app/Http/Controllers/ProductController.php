@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Actions\StoreProductImagesAction;
 use App\Http\Requests\StoreProductRequest;
+use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,7 +18,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //
         abort_if(Gate::denies('product_index'), 403);
@@ -27,7 +31,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         //
         abort_if(Gate::denies('product_create'), 403);
@@ -40,10 +44,13 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreProductRequest $request, StoreProductImagesAction $imagesAction): RedirectResponse
     {
         //
         $product = Product::create($request->only('ref', 'name', 'price', 'quantity', 'description'));
+
+        $imagesAction->execute($request->images, $product);
+
         return redirect()->route('products.show', $product->id)->with('success', 'Product created successfully');
     }
 
@@ -53,7 +60,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product): View
     {
         //
         abort_if(Gate::denies('product_show'), 403);

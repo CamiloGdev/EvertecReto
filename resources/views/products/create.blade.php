@@ -1,10 +1,10 @@
 @extends('layouts.main', ['activePage'=>'products','titlePage'=>'New product'])
 @section('content')
-<div id="app" class="content">
+<div class="content" id="app">
 	<div class="container-fluid">
 		<div class="row">
 			<div class=col-md-12>
-				<form action="{{ route('products.store')}}" method="post" class="form-horisontal">
+				<form action="{{ route('products.store')}}" method="post" class="form-horisontal" enctype="multipart/form-data">
 					@csrf
 					<div class="card">
 						<div class="card-header card-header-primary">
@@ -82,10 +82,10 @@
                           <button @click="$emit('remove-all-images')" type="button" class="btn btn-sm btn-danger">remove all</button>
                       </span>
                     </div>-->
-                    <input-file field-label="{{ trans('admin.products.fields.image') }}" field-name="images"></input-file>
-                    @error('images')
-                      <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <input-file field-label="Product images" field-name="images"></input-file>
+                      @if ($errors->has('images'))
+                          <span class="error text-danger">{{$errors->first('images')}}</span>
+                      @endif
                   </div>
                 </div>
               </div>

@@ -31,12 +31,12 @@ class StoreProductRequest extends FormRequest
             'price' => ['required', 'integer', 'min:1'],
             'quantity' => ['required', 'integer', 'min:0'],
             'description' => ['required', 'min:10', 'max:250'],
-            /*'images' => ['required', 'array'],
+            'images' => ['required', 'array'],
             'images.*' => [
                 'image',
                 'max:200',
-                Rule::dimensions()->maxWidth(500)->maxHeight(250)->ratio(2/1),
-            ]*/
+                Rule::dimensions()->maxWidth(450)->maxHeight(500)->ratio(9/10),
+            ]
         ];
     }
 }
