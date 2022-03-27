@@ -42,6 +42,9 @@ class PermissionSeeder extends Seeder
             'product_show',
             'product_edit',
             'product_destroy',
+
+            'store_index',
+            'store_show',
         ];
 
         foreach ($permissions as $permission) {

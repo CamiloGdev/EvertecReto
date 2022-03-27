@@ -44,7 +44,7 @@
       @can('user_index')
       <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('users.index')}}">
-          <i class="material-icons">content_paste</i>
+          <i class="material-icons">people</i>
             <p>Users</p>
         </a>
       </li>
@@ -72,6 +72,14 @@
           <p>{{ __('Roles') }}</p>
         </a>
       </li>
+      @endcan
+      @can('store_index')
+        <li class="nav-item{{ $activePage == 'store' ? ' active' : '' }}">
+          <a class="nav-link" href="{{ route('store.index')}}">
+            <i class="material-icons">shopping_bag</i>
+            <p>{{ __('Store') }}</p>
+          </a>
+        </li>
       @endcan
       {{--<li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="#">

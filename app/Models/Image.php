@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
@@ -14,4 +16,18 @@ class Image extends Model
     {
         return Storage::disk(config('filesystems.images_disk'))->url("{$this->product_id}/{$this->file_name}");
     }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    protected function urlImage(): Attribute
+    {
+        return new Attribute (
+            get: fn () => $this->url()
+        );
+    }
+
+    protected $appends = ['url_image'];
 }

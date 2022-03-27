@@ -36,4 +36,7 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('products', App\Http\Controllers\ProductController::class);
+
+//    Route::resource('store', App\Http\Controllers\StoreProductController::class);
+    Route::get('/store', [App\Http\Controllers\StoreProductController::class, 'index'])->name('store.index');
 });
