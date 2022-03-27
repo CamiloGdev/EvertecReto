@@ -53,7 +53,8 @@
 									<div class="card-header">
 										<h4 class="card-title">Product images</h4>
 									</div>
-<!--									Crossfade
+
+									{{--Crossfade
 									<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 										<div class="carousel-inner">
 											@foreach($product->images as $image)
@@ -71,7 +72,8 @@
 											<span class="visually-hidden">Next</span>
 										</button>
 									</div>
-									End Crossfade-->
+									End Crossfade--}}
+
 									<div class="card-body">
 										@foreach($product->images as $image)
 											<img class="img-fluid" style="width: 150px;" src="{{ $image->url() }}">
