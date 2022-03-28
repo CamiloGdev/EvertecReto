@@ -24,25 +24,24 @@
             </div>
           </form>
         </div>
+
       </div>
     </nav>
 
     <div class="row">
 
-      <div class="col-md-3" v-for="product in products">
+      <div class="col-md-3" v-for="product in products" :key="product">
         <a href="#">
           <div class="card" style="width: 15rem;">
             <img class="card-img-top" :src="product.images[0].url_image" alt="Card image cap">
             <div class="card-body pt-0">
               <div class="text-center">
                 <h5 class="h3 font-weight-bold" v-text="product.name"></h5>
-                <h5 class="h3">Price</h5>
-                <div class="h5 font-weight-300" v-text="product.price"></div>
-                <button type="button" class="btn btn-primary">Primary</button>
+                <h5 class="h3" v-text="'$ ' + product.price"></h5>
+                <button type="button" class="btn btn-primary btn-sm btn-round" @click="add(product)">
+                  <i class="material-icons">shopping_cart</i> Add to cart
+                </button>
               </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text" v-text="product.description"></p>
             </div>
           </div>
         </a>
@@ -54,16 +53,27 @@
 </template>
 
 <script>
+import {useStore} from 'vuex'
+
 export default {
   name: "ProductsList",
   created() {
     this.getProducts();
   },
+  setup(){
+    const store = useStore()
+    const add = product => {
+      store.dispatch('addCart', product)
+    }
+    return {add}
+  },
+
   data: () => ({
     products: [],
     consult: '',
     setTimeoutConsult: ''
   }),
+
   methods: {
 
     async getProducts() {
