@@ -39,4 +39,5 @@ Route::group(['middleware'=>'auth'], function() {
 
 //    Route::resource('store', App\Http\Controllers\StoreProductController::class);
     Route::get('/store', [App\Http\Controllers\StoreProductController::class, 'index'])->name('store.index');
+    Route::get('/cart', function () {return view('store.cart.cart');})->name('cart.cart');
 });
