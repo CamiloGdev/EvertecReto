@@ -38,7 +38,7 @@
               <div class="text-center">
                 <h5 class="h3 font-weight-bold" v-text="product.name"></h5>
                 <h5 class="h3" v-text="'$ ' + product.price"></h5>
-                <button type="button" class="btn btn-primary btn-sm btn-round" @click="add(product)">
+                <button type="button" class="btn btn-primary btn-sm btn-round" @click="addCart(product)">
                   <i class="material-icons">shopping_cart</i> Add to cart
                 </button>
               </div>
@@ -50,22 +50,18 @@
     </div>
 
   </div>
+
+<!--  <pre v-for="item in state.cart">{{item.name}} &ndash;&gt; {{item.addCount}}</pre>-->
+
 </template>
 
 <script>
-import {useStore} from 'vuex'
+import {state} from '../../store/state.js'
 
 export default {
   name: "ProductsList",
   created() {
     this.getProducts();
-  },
-  setup(){
-    const store = useStore()
-    const add = product => {
-      store.dispatch('addCart', product)
-    }
-    return {add}
   },
 
   data: () => ({
@@ -77,6 +73,7 @@ export default {
   methods: {
 
     async getProducts() {
+
       try {
         const resProducts = await axios.get('/api/get-products', {
           params: {
@@ -95,6 +92,19 @@ export default {
       this.setTimeoutConsult= setTimeout(this.getProducts, 360)
     }
   },
+
+  setup(){
+
+    const addCart = (product) => {
+      state.cart.hasOwnProperty(product.id)
+          ? product.addCount = state.cart[product.id].addCount + 1
+          : product.addCount = 1
+      state.cart[product.id] = product
+      console.log(state.cart)
+    }
+
+    return { state, addCart }
+  }
 }
 
 </script>

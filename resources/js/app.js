@@ -9,16 +9,11 @@ import ProductsList from "./components/store/ProductsList";
 window.Vue = require('vue').default;
 
 const app = createApp({
-  /* root component options */
-  el: '#app',
+   /*root component options*/
   components: {
     InputFile,
     ProductsList,
   }
 })
-
-/*app
-    .component('ProductsList',ProductsList)
-    .component('InputFile',InputFile)*/
 
 app.mount('#app')

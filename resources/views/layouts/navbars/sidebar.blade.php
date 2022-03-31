@@ -74,10 +74,10 @@
       </li>
       @endcan
       @can('store_index')
-        <li class="nav-item{{ $activePage == 'store' ? ' active' : '' }}">
-          <a class="nav-link" href="{{ route('store.index')}}">
+        <li class="nav-item{{ $activePage == 'shop' ? ' active' : '' }}">
+          <a class="nav-link" href="{{ route('shop.index')}}">
             <i class="material-icons">shopping_bag</i>
-            <p>{{ __('Store') }}</p>
+            <p>{{ __('Shop') }}</p>
           </a>
         </li>
       @endcan
