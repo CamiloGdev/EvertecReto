@@ -37,7 +37,7 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('products', App\Http\Controllers\ProductController::class);
 
-//    Route::resource('store', App\Http\Controllers\StoreProductController::class);
-    Route::get('/store', [App\Http\Controllers\StoreProductController::class, 'index'])->name('store.index');
-    Route::get('/cart', function () {return view('store.cart.cart');})->name('cart.cart');
+//    Route::resource('shop', App\Http\Controllers\StoreProductController::class);
+    Route::get('/shop', [App\Http\Controllers\StoreProductController::class, 'index'])->name('shop.index');
+    Route::get('/cart', function () {return view('shop.cart.cart');})->name('cart.cart');
 });

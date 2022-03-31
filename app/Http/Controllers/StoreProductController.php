@@ -21,8 +21,8 @@ class StoreProductController extends Controller
         abort_if(Gate::denies('store_index'), 403);
 //        $products = Product::paginate(10);
         //
-//        return view('store.products.index', compact('products'));
-        return view('store.products.index');
+//        return view('shop.products.index', compact('products'));
+        return view('shop.products.index');
     }
 
     public function getProducts(Request $request)
@@ -71,7 +71,7 @@ class StoreProductController extends Controller
 
         abort_if(Gate::denies('store_show'), 403);
 
-        return view('store.products.show', compact('product'));
+        return view('shop.products.show', compact('product'));
 
     }
 
