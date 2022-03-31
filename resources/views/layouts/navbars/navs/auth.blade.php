@@ -32,9 +32,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('cart.cart') }}">
             <i class="material-icons">shopping_cart</i>
-            <span class="notification">5</span>
+{{--            <span class="notification">5</span>--}}
+            <cart-icon></cart-icon>
             <p class="d-lg-none d-md-block">
-              {{ __('Stats') }}
+              {{ __('Shopp') }}
             </p>
           </a>
         </li>
