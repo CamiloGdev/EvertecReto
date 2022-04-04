@@ -2,6 +2,9 @@ require('./bootstrap');
 
 // window.Vue = require('vue').default;
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 import {createApp, watchEffect} from 'vue'
 import {state} from "./store/state";
 import InputFile from './components/InputFile.vue'
@@ -30,4 +33,5 @@ const app = createApp({
   }
 })
 
+app.use(VueSweetalert2)
 app.mount('#app')
