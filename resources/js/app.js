@@ -22,12 +22,12 @@ const app = createApp({
     CartIcon
   },
   setup() {
-    if (localStorage.getItem('cart')) {
+    if (localStorage.getItem('cartUser_' + window.app.user)) {
       state.cart = JSON.parse(localStorage.getItem('cart'));
     }
 
     watchEffect (() => {
-      localStorage.setItem('cart', JSON.stringify(state.cart))
+      localStorage.setItem('cartUser_' + window.app.user, JSON.stringify(state.cart))
     })
     return{state}
   }
