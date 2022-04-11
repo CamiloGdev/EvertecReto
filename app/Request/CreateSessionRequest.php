@@ -2,7 +2,7 @@
 
 namespace App\Request;
 
-use App\Contracts\WebcheckoutRequestContract;
+//use App\Contracts\WebcheckoutRequestContract;
 use Illuminate\Http\Request;
 
 class CreateSessionRequest extends GetInformationRequest
